@@ -85,6 +85,7 @@ public class Graph {
         int deg = (int)city1.getX();
         double min = city1.getX()-deg;
         double rad = Math.PI * (deg + 5.0*(min/3.0)) / 180.0; //TODO make them for all
+        return 0.0;
     }
 
     private double euclideanDistanceBetween2Cities(City city1,City city2){
