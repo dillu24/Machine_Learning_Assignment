@@ -7,6 +7,8 @@ import java.util.Scanner;
  * Created by Dylan Galea on 28/02/2018.
  */
 public class Graph {
+    //ToDo After make matrix direct input aswell
+
     private ArrayList<City> listOfCities = new ArrayList<City>();
     private double matrixOfWeights[][];
 
@@ -79,7 +81,10 @@ public class Graph {
 
 
     private double geometricDistanceBetween2Cities(City city1,City city2){
-        return 0.0; //ToDo make the geometric distance function and do the constructors to take matrices instantly
+        //ToDo make the geometric distance function
+        int deg = (int)city1.getX();
+        double min = city1.getX()-deg;
+        double rad = Math.PI * (deg + 5.0*(min/3.0)) / 180.0; //TODO make them for all
     }
 
     private double euclideanDistanceBetween2Cities(City city1,City city2){
