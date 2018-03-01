@@ -1,19 +1,88 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by Dylan Galea on 28/02/2018.
  */
 public class Graph {
-    private ArrayList<City> listOfCities;
+    private ArrayList<City> listOfCities = new ArrayList<City>();
     private double matrixOfWeights[][];
 
-    //ToDo make getters and setters of both array list and map , and do constructors etc.
+    public Graph(){}
 
-    public double geometricDistanceBetween2Cities(City city1,City city2){
-        return 0.0; //ToDo make the geometric distance function
+    public Graph(File pathname){
+        setListOfCities(pathname);
+        setMatrixOfWeightsEuclidean();
     }
 
-    public double euclideanDistanceBetween2Cities(City city1,City city2){
+    public void setListOfCities(File pathname){
+        try{
+            Scanner in = new Scanner(pathname);
+
+            String line = "";
+
+            while(!line.equals("NODE_COORD_SECTION")){
+                line = in.nextLine();
+            }
+
+            line = in.nextLine();
+
+            while(!line.equals("EOF")){
+                String splitString[] = line.split(" ");
+                String numbersOnly[] = new String[3];
+                int j =0;
+                for(int i=0;i<splitString.length;i++){
+                    if(!splitString[i].equals("")){
+                        numbersOnly[j] = splitString[i]; //To avoid having "" as input
+                        j++;
+                    }
+                }
+
+                int newID = Integer.parseInt(numbersOnly[0]);
+                double newX = Double.parseDouble(numbersOnly[1]);
+                double newY = Double.parseDouble(numbersOnly[2]);
+                listOfCities.add(new City(newX,newY,newID));
+                line = in.nextLine();
+            }
+        } catch (FileNotFoundException fnf) {
+            System.out.println("Error opening file");
+        }
+    }
+
+    public void setMatrixOfWeightsGeometric(){
+        matrixOfWeights = new double[listOfCities.size()][listOfCities.size()];
+        for(int i=0;i<listOfCities.size();i++){
+            for(int j=0;j<listOfCities.size();j++){
+                matrixOfWeights[i][j] = geometricDistanceBetween2Cities(listOfCities.get(i),listOfCities.get(j));
+            }
+        }
+    }
+
+    private void setMatrixOfWeightsEuclidean(){
+        matrixOfWeights = new double[listOfCities.size()][listOfCities.size()];
+        for(int i=0;i<listOfCities.size();i++){
+            for(int j=0;j<listOfCities.size();j++){
+                matrixOfWeights[i][j] = euclideanDistanceBetween2Cities(listOfCities.get(i),listOfCities.get(j));
+            }
+        }
+    }
+
+    public ArrayList<City> getListOfCities(){
+        return listOfCities;
+    }
+
+    public double[][] getMatrixOfWeights (){
+        return matrixOfWeights;
+    }
+
+
+    private double geometricDistanceBetween2Cities(City city1,City city2){
+        return 0.0; //ToDo make the geometric distance function and do the constructors to take matrices instantly
+    }
+
+    private double euclideanDistanceBetween2Cities(City city1,City city2){
         return Math.sqrt(square(city1.getX()-city2.getX())+
                 square(city1.getY()-city2.getY()));
     }
