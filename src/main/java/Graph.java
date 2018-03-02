@@ -16,7 +16,7 @@ public class Graph {
 
     public Graph(File pathname){
         setListOfCities(pathname);
-        setMatrixOfWeightsEuclidean();
+        setMatrixOfWeightsGeometric();
     }
 
     public void setListOfCities(File pathname){
@@ -75,17 +75,27 @@ public class Graph {
         return listOfCities;
     }
 
-    public double[][] getMatrixOfWeights (){
+    public double[][] getMatrixOfWeights(){
         return matrixOfWeights;
     }
 
 
     private double geometricDistanceBetween2Cities(City city1,City city2){
         //ToDo make the geometric distance function
-        int deg = (int)city1.getX();
-        double min = city1.getX()-deg;
-        double rad = Math.PI * (deg + 5.0*(min/3.0)) / 180.0; //TODO make them for all
-        return 0.0;
+        double cityX[] = {computeCoordinateToRadian(city1.getX()),computeCoordinateToRadian(city2.getX())};
+        double cityY[] = {computeCoordinateToRadian(city1.getY()),computeCoordinateToRadian(city2.getY())};
+        double RRR = 6378.388;
+
+        double q1 = Math.cos(cityY[0]-cityY[1]);
+        double q2 = Math.cos(cityX[0]-cityX[1]);
+        double q3 = Math.cos(cityX[0]+cityX[1]);
+        return (int) ( RRR * Math.acos( 0.5*((1.0+q1)*q2 - (1.0-q1)*q3) ) + 1.0);
+    }
+
+    private double computeCoordinateToRadian(double input){
+        int degree = (int) input;
+        double min = input-degree;
+        return Math.PI * (degree + 5.0*(min/3.0)) / 180.0;
     }
 
     private double euclideanDistanceBetween2Cities(City city1,City city2){
