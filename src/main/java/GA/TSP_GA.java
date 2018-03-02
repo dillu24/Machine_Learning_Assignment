@@ -5,10 +5,12 @@ import TSP_Graph.Route;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 /**
  * Created by Dylan Galea on 02/03/2018.
  */
+
+//TODO Make Them Spit Indexes instead
+
 public class TSP_GA {
     private ArrayList <Route> listOfRoutes = new ArrayList<Route>();
     private double mutationRate;
@@ -142,7 +144,21 @@ public class TSP_GA {
         initializeListOfRoutes();
         computeFitnessOfEachRoute();
         for(int i=0;i<100;i++){
-            //ToDo Continue GA_Engine and test it
+           Route selectedImmediately[] = Selection((int)((1-crossOverRate)*populationSize));
+           Route selectedForCrossover[] = Selection((int)(crossOverRate*populationSize));
+           ArrayList <Route> offSpringList = new ArrayList<Route>();
+           for(int j=0;j<selectedForCrossover.length-1;j++){
+               offSpringList.add(crossOver(selectedForCrossover[j],selectedForCrossover[j+1]));
+           }
+           listOfRoutes.clear();
+            for (Route anOffSpringList : offSpringList) {
+                listOfRoutes.add(anOffSpringList);
+            }
+            for (Route aSelectedImmediately : selectedImmediately) {
+                listOfRoutes.add(aSelectedImmediately);
+            }
+            Route selectedForMutation [] = Selection((int)(mutationRate*populationSize));
+
         }
         return 0.0;
     }
