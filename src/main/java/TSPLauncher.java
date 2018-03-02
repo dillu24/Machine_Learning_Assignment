@@ -1,7 +1,8 @@
+import TSP_Graph.City;
+import TSP_Graph.Graph;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Dylan Galea on 28/02/2018.

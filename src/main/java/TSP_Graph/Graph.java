@@ -1,3 +1,7 @@
+package TSP_Graph;
+
+import TSP_Graph.City;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
