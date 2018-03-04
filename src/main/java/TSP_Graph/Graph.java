@@ -93,7 +93,7 @@ public class Graph {
         double q1 = Math.cos(cityY[0]-cityY[1]);
         double q2 = Math.cos(cityX[0]-cityX[1]);
         double q3 = Math.cos(cityX[0]+cityX[1]);
-        return (int) ( RRR * Math.acos( 0.5*((1.0+q1)*q2 - (1.0-q1)*q3) ) + 1.0);
+        return (int)( RRR * Math.acos( 0.5*((1.0+q1)*q2 - (1.0-q1)*q3) ) + 1.0);
     }
 
     private double computeCoordinateToRadian(double input){
@@ -103,8 +103,8 @@ public class Graph {
     }
 
     private double euclideanDistanceBetween2Cities(City city1,City city2){
-        return Math.sqrt(square(city1.getX()-city2.getX())+
-                square(city1.getY()-city2.getY()));
+        return Math.round(Math.sqrt(square(city1.getX()-city2.getX())+
+                square(city1.getY()-city2.getY())));
     }
 
     private double square(double input){
