@@ -1,7 +1,5 @@
 package TSP_Graph;
 
-import TSP_Graph.City;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -84,7 +82,7 @@ public class Graph {
     }
 
 
-    private double geometricDistanceBetween2Cities(City city1,City city2){
+    private double geometricDistanceBetween2Cities(City city1, City city2){
         //ToDo make the geometric distance function
         double cityX[] = {computeCoordinateToRadian(city1.getX()),computeCoordinateToRadian(city2.getX())};
         double cityY[] = {computeCoordinateToRadian(city1.getY()),computeCoordinateToRadian(city2.getY())};
@@ -102,7 +100,7 @@ public class Graph {
         return Math.PI * (degree + 5.0*(min/3.0)) / 180.0;
     }
 
-    private double euclideanDistanceBetween2Cities(City city1,City city2){
+    private double euclideanDistanceBetween2Cities(City city1, City city2){
         return Math.round(Math.sqrt(square(city1.getX()-city2.getX())+
                 square(city1.getY()-city2.getY())));
     }

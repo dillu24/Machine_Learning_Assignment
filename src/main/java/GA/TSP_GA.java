@@ -1,7 +1,6 @@
 package GA;
 
 import TSP_Graph.Graph;
-import TSP_Graph.Route;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,16 +11,16 @@ import java.util.Random;
  */
 
 public class TSP_GA {
-    private ArrayList <Route> listOfRoutes = new ArrayList<Route>();
+    private ArrayList <GARoute> listOfRoutes = new ArrayList<GARoute>();
     private double mutationRate;
     private int populationSize;
     private double crossOverRate;
     private Graph g;
-
+    //best 0.02,25,0.8
     public TSP_GA(){
         mutationRate = 0.02; // highering mutation rate bounces off optima but too high creates too much random ..low population higher mutation
                             // Greater instance => less pop size greater mutation since we need more variety
-        populationSize = 10; //Increasing population also increases chance always finds
+        populationSize = 25; //Increasing population also increases chance always finds
         crossOverRate = 0.8; //Lowering cross over rate improves .. highering too much bounce of the optimal
         g = new Graph(new File(
                 "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
@@ -31,7 +30,7 @@ public class TSP_GA {
         this.mutationRate = mutationRate;
         this.populationSize = populationSize;
         this.crossOverRate = crossOverRate;
-        new Graph(filepath);
+        g = new Graph(filepath);
     }
 
     private void initializeListOfRoutes(){
@@ -50,7 +49,7 @@ public class TSP_GA {
                 }
                 input[j] = newNumber;
             }
-            listOfRoutes.add(new Route(g.getListOfCities().size(),input));
+            listOfRoutes.add(new GARoute(g.getListOfCities().size(),input));
         }
     }
 
@@ -62,17 +61,17 @@ public class TSP_GA {
         return false;
     }
 
-    private double fitnessFunction(Route route){
+    private double fitnessFunction(GARoute route){
         return 1/(route.getRouteCost(g));
     }
 
     private void computeFitnessOfEachRoute(){
-        for (Route route : listOfRoutes) {
+        for (GARoute route : listOfRoutes) {
             route.setFitnessScore(fitnessFunction(route));
         }
     }
 
-    private double probabilityRouteSelected(Route route){
+    private double probabilityRouteSelected(GARoute route){
         double totalProb = 0;
         for(int i=0;i<listOfRoutes.size();i++){
             totalProb=totalProb+listOfRoutes.get(i).getFitnessScore();
@@ -134,7 +133,7 @@ public class TSP_GA {
         return resultArray;
     }
 
-    private Route[] crossOver(Route route1,Route route2) { //ordered 2 point crossover
+    private GARoute[] crossOver(GARoute route1, GARoute route2) { //ordered 2 point crossover
         Random rand = new Random(System.currentTimeMillis());
         int firstNum = rand.nextInt(route1.getListOfCities().length);
         int secondNum = rand.nextInt(route1.getListOfCities().length);
@@ -174,9 +173,9 @@ public class TSP_GA {
                 child2cities[j] = route1.getListOfCities()[i];
             }
         }
-        Route child1 = new Route(child1cities.length,child1cities);
-        Route child2 = new Route(child2cities.length,child2cities);
-        return new Route[]{child1, child2};
+        GARoute child1 = new GARoute(child1cities.length,child1cities);
+        GARoute child2 = new GARoute(child2cities.length,child2cities);
+        return new GARoute[]{child1, child2};
     }
 
     private int[] reverse(int array[]){
@@ -187,7 +186,7 @@ public class TSP_GA {
         return result;
     }
 
-    private Route mutate(Route route){ //inversion
+    private GARoute mutate(GARoute route){ //inversion
         Random rand = new Random(System.currentTimeMillis());
         int firstNum = rand.nextInt(route.getListOfCities().length);
         int secondNum = rand.nextInt(route.getListOfCities().length);
@@ -210,7 +209,7 @@ public class TSP_GA {
         return route;
     }
 
-    private Route createRandomRoute(){
+    private GARoute createRandomRoute(){
         Random rand = new Random(System.currentTimeMillis()); //For Seed
         int input[] = new int[g.getListOfCities().size()];
         for(int j=0;j<input.length;j++){
@@ -223,11 +222,11 @@ public class TSP_GA {
             }
             input[j] = newNumber;
         }
-        return new Route(g.getListOfCities().size(),input);
+        return new GARoute(g.getListOfCities().size(),input);
     }
 
     public double GA_Engine(){
-        ArrayList<Route> nextGenRoutes = new ArrayList<Route>();
+        ArrayList<GARoute> nextGenRoutes = new ArrayList<GARoute>();
         initializeListOfRoutes();
         computeFitnessOfEachRoute();
         for(int i=0;i<10000000;i++){
@@ -238,7 +237,7 @@ public class TSP_GA {
 
             int indicesForCrossOver [] = CrossOverSelection((int)Math.ceil(crossOverRate*populationSize));
             for(int j=0;j<indicesForCrossOver.length-1;j++){
-               Route children[]=
+               GARoute children[]=
                        crossOver(listOfRoutes.get(indicesForCrossOver[j]),listOfRoutes.get(indicesForCrossOver[j+1]));
                nextGenRoutes.add(children[0]);
                nextGenRoutes.add(children[1]);

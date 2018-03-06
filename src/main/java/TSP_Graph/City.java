@@ -10,7 +10,7 @@ public class City {
 
     public City(){}
 
-    public City(double x,double y,int ID){
+    public City(double x, double y, int ID){
         setX(x);
         setY(y);
         setID(ID);
