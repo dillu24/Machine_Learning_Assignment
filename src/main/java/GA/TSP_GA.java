@@ -19,10 +19,10 @@ public class TSP_GA {
     private Graph g;
 
     public TSP_GA(){
-        mutationRate = 0.2; // highering mutation rate bounces off optima but too high creates too much random ..low population higher mutation
+        mutationRate = 0.02; // highering mutation rate bounces off optima but too high creates too much random ..low population higher mutation
                             // Greater instance => less pop size greater mutation since we need more variety
-        populationSize = 1000; //Increasing population also increases chance always finds
-        crossOverRate = 0.7; //Lowering cross over rate improves .. highering too much bounce of the optimal
+        populationSize = 10; //Increasing population also increases chance always finds
+        crossOverRate = 0.8; //Lowering cross over rate improves .. highering too much bounce of the optimal
         g = new Graph(new File(
                 "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
     }
@@ -134,7 +134,7 @@ public class TSP_GA {
         return resultArray;
     }
 
-    private Route[] crossOver(Route route1,Route route2) { //ordered crossover
+    private Route[] crossOver(Route route1,Route route2) { //ordered 2 point crossover
         Random rand = new Random(System.currentTimeMillis());
         int firstNum = rand.nextInt(route1.getListOfCities().length);
         int secondNum = rand.nextInt(route1.getListOfCities().length);
@@ -230,7 +230,7 @@ public class TSP_GA {
         ArrayList<Route> nextGenRoutes = new ArrayList<Route>();
         initializeListOfRoutes();
         computeFitnessOfEachRoute();
-        for(int i=0;i<1000000;i++){
+        for(int i=0;i<10000000;i++){
             int indicesAutomaticallySelected [] = AutomaticSelection((int)Math.ceil((1-crossOverRate)*populationSize));
             for(int j=0;j<indicesAutomaticallySelected.length;j++){
                 nextGenRoutes.add(listOfRoutes.get(indicesAutomaticallySelected[j]));
