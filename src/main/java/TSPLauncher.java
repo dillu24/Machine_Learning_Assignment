@@ -10,7 +10,7 @@ public class TSPLauncher {
         //System.out.println("The shortest path is :"+geneticAlgorithm.GA_Engine());
 
         ACO_TSP aco = new ACO_TSP();
-        aco.ACO_Engine();
+        System.out.println("Shortest Route has length "+aco.ACO_Engine());
     }
 
 }

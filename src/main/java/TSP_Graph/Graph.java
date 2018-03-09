@@ -18,7 +18,7 @@ public class Graph {
 
     public Graph(File pathname){
         setListOfCities(pathname);
-        setMatrixOfWeightsGeometric();
+        setMatrixOfWeightsEuclidean();
     }
 
     public void setListOfCities(File pathname){
