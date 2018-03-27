@@ -331,7 +331,7 @@ public class TSP_GA {
             for(int k=listOfRoutes.size();k<populationSize;k++){ //maintain the population size by adding random route to
                                                                  //preserve diversity.
                 GARoute random = generateRandomTour();
-                random.setFitnessScore(random.getRouteCost(g));
+                random.setFitnessScore(fitnessFunction(random));
                 fitnessScoresList.add(random.getFitnessScore());
                 listOfRoutes.add(random);
             }
