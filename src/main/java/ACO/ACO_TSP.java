@@ -25,15 +25,15 @@ public class ACO_TSP {
         ants = new ArrayList<Ant>();
         g = new Graph(new File(
                 "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
-        numberOfAnts = 10;
-        q0 = 0.9;
-        alpha = 0.1;
-        Beta = 2;
+        numberOfAnts = 2; //
+        q0 = 0.9; //0.9
+        alpha = 0.1; //0.1
+        Beta = 2; //2
         t0 = 1/(g.getListOfCities().size()*TourLengthUsingNearestNeighbourHeuristic()); //By paper
         pheromoneMatrix = new double [g.getListOfCities().size()][g.getListOfCities().size()];
         for(int i=0;i<g.getListOfCities().size();i++){
             for(int j=0;j<g.getListOfCities().size();j++){
-                pheromoneMatrix[i][j] = 0.05; //by second paper
+                pheromoneMatrix[i][j] = 0.05;
             }
         }
     }
