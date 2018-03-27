@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a32b29e9-61f3-4840-bc35-0a508010408e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/GA/GARoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/GA/TSP_GA.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/TSPLauncher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/TSP_Graph/City.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/TSP_Graph/Graph.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/set" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ACO/ACORoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ACO/ACO_TSP.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ACO/Ant.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/GA/GARoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/GA/TSP_GA.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/TSPLauncher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/TSP_Graph/City.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/TSP_Graph/Graph.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ACO/ACO_TSP.java" afterPath="$PROJECT_DIR$/src/main/java/ACO/ACO_TSP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GA/GARoute.java" afterPath="$PROJECT_DIR$/src/main/java/GA/GARoute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GA/TSP_GA.java" afterPath="$PROJECT_DIR$/src/main/java/GA/TSP_GA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TSPLauncher.java" afterPath="$PROJECT_DIR$/src/main/java/TSPLauncher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TSP_Graph/City.java" afterPath="$PROJECT_DIR$/src/main/java/TSP_Graph/City.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TSP_Graph/Graph.java" afterPath="$PROJECT_DIR$/src/main/java/TSP_Graph/Graph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/burma14.tsp" afterPath="$PROJECT_DIR$/src/main/java/burma14.tsp" />
-    </list>
+    <list default="true" id="a32b29e9-61f3-4840-bc35-0a508010408e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
