@@ -1,30 +1,20 @@
-import TSP_Graph.City;
-import TSP_Graph.Graph;
-
-import java.io.File;
-import java.util.ArrayList;
+import GA.TSP_GA;
 
 /**
- * Created by Dylan Galea on 28/02/2018.
+ * The TSPLauncher class is used to call the different algorithm engines in order to run and give the shortest Route
+ * length that it finds , for each algorithm. It also asks the user at which parameters he wants the algorithm to run. When
+ * asking for these values , the best values are displayed to the user in order to guide him through the use of the
+ * algorithm.
  */
+
 public class TSPLauncher {
     public static void main(String args[]) {
-        Graph g = new Graph(new File(
-                "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
-        ArrayList<City> listOfCities = g.getListOfCities();
-        double matrixOfWeights[][] = g.getMatrixOfWeights();
-        for(int i=0;i<listOfCities.size();i++){
-            System.out.println(listOfCities.get(i).getID()+" "+listOfCities.get(i).getX()+" "
-                    +listOfCities.get(i).getY());
-        }
+        TSP_GA geneticAlgorithm = new TSP_GA();
+        System.out.println("The shortest path is :"+geneticAlgorithm.GA_Engine());
 
-        for(int i=0;i<listOfCities.size();i++){
-            for(int j=0;j<listOfCities.size();j++){
-                System.out.print(matrixOfWeights[i][j]+" ");
-            }
-            System.out.println();
-        }
-
+        //ACO_TSP aco = new ACO_TSP();
+        //System.out.println("Shortest Route has length "+aco.ACO_Engine());
     }
+
 }
 
