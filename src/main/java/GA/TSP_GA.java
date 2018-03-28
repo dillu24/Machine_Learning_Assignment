@@ -332,6 +332,10 @@ public class TSP_GA {
                                                                  //preserve diversity.
                 GARoute random = generateRandomTour();
                 random.setFitnessScore(fitnessFunction(random));
+                while (fitnessScoresList.contains(random.getFitnessScore())){ //check that random route has not already been generated
+                    random=generateRandomTour();
+                    random.setFitnessScore(fitnessFunction(random));
+                }
                 fitnessScoresList.add(random.getFitnessScore());
                 listOfRoutes.add(random);
             }
