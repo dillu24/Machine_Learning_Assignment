@@ -1,4 +1,7 @@
+import ACO.ACO_TSP;
 import GA.TSP_GA;
+
+import java.util.Scanner;
 
 /**
  * The TSPLauncher class is used to call the different algorithm engines in order to run and give the shortest Route
@@ -12,8 +15,8 @@ public class TSPLauncher {
         TSP_GA geneticAlgorithm = new TSP_GA();
         System.out.println("The shortest path is :"+geneticAlgorithm.GA_Engine());
 
-        //ACO_TSP aco = new ACO_TSP();
-        //System.out.println("Shortest Route has length "+aco.ACO_Engine());
+        ACO_TSP aco = new ACO_TSP();
+        System.out.println("Shortest Route has length "+aco.ACO_Engine());
     }
 
 }
