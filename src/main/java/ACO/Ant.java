@@ -15,7 +15,7 @@ class Ant {
      */
     ACORoute route;
     City currentCity;
-    private int startingCityIndex;
+    int startingCityIndex;
 
     /**
      * This constructor is used to initialize an ant giving it a starting city and store the require information in the

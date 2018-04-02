@@ -37,16 +37,16 @@ public class ACO_TSP {
     public ACO_TSP(){
         ants = new ArrayList<Ant>();
         g = new Graph(new File(
-                "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
+                "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/gil262.tsp"));
         numberOfAnts = 10;
         q0 = 0.9;
         alpha = 0.1;
         Beta = 2;
-        t0 = 1/(g.getListOfCities().size()*TourLengthUsingNearestNeighbourHeuristic()); //as suggested by dorigo
+        t0 = 1/(g.getListOfCities().size()*TourLengthUsingNearestNeighbourHeuristic()); //as suggested by Dorigo
         pheromoneMatrix = new double [g.getListOfCities().size()][g.getListOfCities().size()];
         for(int i=0;i<g.getListOfCities().size();i++){ //initialize pheromone matrix with value 0.05
             for(int j=0;j<g.getListOfCities().size();j++){
-                pheromoneMatrix[i][j] = 0.05;
+                pheromoneMatrix[i][j] = 0.00005;
             }
         }
     }
@@ -68,6 +68,7 @@ public class ACO_TSP {
      */
     public ACO_TSP(int numberOfAnts,double q0,double alpha, File filepath,double t0,double Beta){
         this.numberOfAnts = numberOfAnts;
+        ants = new ArrayList<Ant>();
         this.q0 = q0;
         this.alpha = alpha;
         this.t0 = t0;
@@ -76,7 +77,7 @@ public class ACO_TSP {
         pheromoneMatrix = new double [g.getListOfCities().size()][g.getListOfCities().size()]; //as suggested by dorigo
         for(int i=0;i<g.getListOfCities().size();i++){ //initialize pheromone matrix with small value of 0.05
             for(int j=0;j<g.getListOfCities().size();j++){
-                pheromoneMatrix[i][j] = 0.05;
+                pheromoneMatrix[i][j] = 0.00005;
             }
         }
     }
@@ -275,7 +276,7 @@ public class ACO_TSP {
 
     public double ACO_Engine(){
         double answer =Double.MAX_VALUE; //stores the shortest path solution
-        for(int i=0;i<10000;i++){ //for a predefined number of iterations
+        for(int i=0;i<100000;i++){ //for a predefined number of iterations
             createAnts(); //create new ants so that they are given new starting cities
             int antsCompletedTour = 0; //stores the number of ants that completed a tour
             while(antsCompletedTour < numberOfAnts){ //while not all ants completed the tour
@@ -298,7 +299,7 @@ public class ACO_TSP {
             if(smallestDistance<answer){ //if smallest distance in current iteration is better than global update global
                 answer = smallestDistance;
             }
-            System.out.println("iteration "+i+"smallest distance : "+smallestDistance);
+            System.out.println("iteration "+i+"smallest distance : "+answer); //jew smallest disntace
             for(int j=0;j<ants.get(bestAntIndex).route.visitedCities.size()-1;j++){
                 //globally update the pheromone levels of edges used by the best any
                 int currentCityIndex = ants.get(bestAntIndex).route.visitedCities.get(j).getID()-1;
@@ -310,10 +311,6 @@ public class ACO_TSP {
                     ants.get(bestAntIndex).route.visitedCities.size()-1).getID()-1;
             int nextCityIndex = ants.get(bestAntIndex).route.visitedCities.get(0).getID()-1;
             globalPheromoneUpdate(currentCityIndex,nextCityIndex,ants.get(bestAntIndex).getRouteLength());
-            for(int j=0;j<numberOfAnts;j++){ //set all ants to null to create new ants , this was done this way since
-                                             // create ants give the starting indices of the ant.
-                ants.set(j,null);
-            }
             ants.clear();
         }
         return answer;
