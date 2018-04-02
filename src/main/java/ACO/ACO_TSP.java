@@ -36,8 +36,7 @@ public class ACO_TSP {
 
     public ACO_TSP(){
         ants = new ArrayList<Ant>();
-        g = new Graph(new File(
-                "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/gil262.tsp"));
+        g = new Graph(new File("./burma14.tsp"));
         numberOfAnts = 10;
         q0 = 0.9;
         alpha = 0.1;

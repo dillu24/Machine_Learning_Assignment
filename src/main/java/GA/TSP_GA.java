@@ -35,8 +35,7 @@ public class TSP_GA {
         populationSize = 30;
         crossOverRate = 0.9;
         randomRouteRate= 0.1;
-        g = new Graph(new File(
-                "C:/Users/Dylan Galea/IdeaProjects/MachineLearning/src/main/java/burma14.tsp"));
+        g = new Graph(new File("./burma14.tsp"));
     }
 
     /**
@@ -269,7 +268,7 @@ public class TSP_GA {
         GenerateRandomPopulation(); //Generates the initial population randomly
         computeFitnessOfPopulation(); //compute fitness of each individual
         Random rand = new Random(System.currentTimeMillis());
-        for(int i=0;i<100000;i++){ //for a predefined number of iterations (since we do not know the optimal solution)
+        for(int i=0;i<1000;i++){ //for a predefined number of iterations (since we do not know the optimal solution)
             ArrayList<GARoute> nextPopulation = new ArrayList<GARoute>(); //stores all the children created from parents
             Set<Double> fitnessScoresList = new HashSet<Double>(); //stores the fitnesses already stored in order
                                                                            // to not have duplicates in order to avoid
