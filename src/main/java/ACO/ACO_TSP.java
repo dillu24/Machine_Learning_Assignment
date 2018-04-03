@@ -35,7 +35,6 @@ public class ACO_TSP {
      */
 
     public ACO_TSP(){
-        //ants = new ArrayList<Ant>();
         g = new Graph(new File("./burma14.tsp"));
         numberOfAnts = 10;
         q0 = 0.9;
