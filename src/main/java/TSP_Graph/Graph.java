@@ -39,7 +39,7 @@ public class Graph {
 
     public Graph(File pathname){
         setListOfCities(pathname);
-        setMatrixOfWeightsEuclidean();
+        setMatrixOfWeightsGeometric();
     }
 
     /**
