@@ -1,0 +1,1 @@
+javac src/main/java/TSPLauncher.java src/main/java/ACO/ACO_TSP.java src/main/java/ACO/ACORoute.java src/main/java/ACO/Ant.java src/main/java/GA/GARoute.java src/main/java/GA/TSP_GA.java src/main/java/TSP_Graph/City.java src/main/java/TSP_Graph/Graph.java

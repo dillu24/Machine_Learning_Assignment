@@ -35,7 +35,7 @@ public class TSP_GA {
         populationSize = 30;
         crossOverRate = 0.9;
         randomRouteRate= 0.1;
-        g = new Graph(new File("./burma14.tsp"));
+        g = new Graph(new File("./src/main/java/burma14.tsp"));
     }
 
     /**

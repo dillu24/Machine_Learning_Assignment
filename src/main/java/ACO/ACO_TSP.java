@@ -35,8 +35,7 @@ public class ACO_TSP {
      */
 
     public ACO_TSP(){
-        ants = new ArrayList<Ant>();
-        g = new Graph(new File("./burma14.tsp"));
+        g = new Graph(new File("./src/main/java/burma14.tsp"));
         numberOfAnts = 10;
         q0 = 0.9;
         alpha = 0.1;
@@ -67,7 +66,6 @@ public class ACO_TSP {
      */
     public ACO_TSP(int numberOfAnts,double q0,double alpha, File filepath,double t0,double Beta){
         this.numberOfAnts = numberOfAnts;
-        ants = new ArrayList<Ant>();
         this.q0 = q0;
         this.alpha = alpha;
         this.t0 = t0;
@@ -276,6 +274,7 @@ public class ACO_TSP {
     public double ACO_Engine(){
         double answer =Double.MAX_VALUE; //stores the shortest path solution
         for(int i=0;i<100000;i++){ //for a predefined number of iterations
+            ants = new ArrayList<Ant>(); //each time create new ants for better running time
             createAnts(); //create new ants so that they are given new starting cities
             int antsCompletedTour = 0; //stores the number of ants that completed a tour
             while(antsCompletedTour < numberOfAnts){ //while not all ants completed the tour
@@ -310,7 +309,6 @@ public class ACO_TSP {
                     ants.get(bestAntIndex).route.visitedCities.size()-1).getID()-1;
             int nextCityIndex = ants.get(bestAntIndex).route.visitedCities.get(0).getID()-1;
             globalPheromoneUpdate(currentCityIndex,nextCityIndex,ants.get(bestAntIndex).getRouteLength());
-            ants.clear();
         }
         return answer;
     }

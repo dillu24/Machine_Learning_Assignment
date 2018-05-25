@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 /**
  * This class defines the graph class which is used to encode the Complete Graph of the different cities that were
  * inputted from the TSP file instance . The distances between the cities can be encoded both in Euclidean distance
@@ -80,6 +82,7 @@ public class Graph {
             }
         } catch (FileNotFoundException fnf) { // if the file could not be opened an error is displayed to the user
             System.out.println("Error opening file");
+            exit(-1);
         }
     }
 

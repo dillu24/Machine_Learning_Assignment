@@ -1,0 +1,29 @@
+In order to Compile and Run the program in windows
+-----------------------------------------------------------------
+
+1.Using CMD go into the folder named MachineLearning
+2.In CMD type "Compilation.bat" to compile the program
+3.In CMD type "Run.bat" to run the program 
+
+In order to modify the parameters of the Genetic Algorithm
+-------------------------------------------------------------------------
+
+1. Go in the TSPLauncher.java class and modfy in the constructor the file you want to run as benchmark and the parameters
+2. If you want to modify the number of loops modify it in the game engine class TSP_GA.java
+
+ In order to modify the parameters of the Ant Colony Optimizaton Algorithm
+--------------------------------------------------------------------------------------------
+
+1.Go in the class TSP_ACO and mofiy accoridingly the parameters found in the default constructor 
+2. If the number of iterations need to be modified , modfiy them from the engine method in the class TSP_ACO.
+
+NOTE : In the write up there is the optimal parameter values in a table, for each file found inside the Machine Learning folder. Therefore it is recommended that for optimal use the parameters should be modified 
+                as guided in this README file.
+NOTE : javadocs are located in the folder javadocs
+NOTE : Statement of completion is found in the last page of the report
+NOTE : plagiarism form is in this folder
+NOTE : In the main launcher , the launcher only loads the file burma14.tsp as instance , the reason being is that different instances require different optimal parameters as highlighted in the documentation. Thus 
+                in order to load more instances , change the path name from the TSPLauncher.java. It is also important to check that the file being use uses either the EUC_2D metric or the GEO metric , these were both
+                included as functions in the class TSP_Graph/Graph.java . Thus if a GEO instance is called , check that the constructor in the Graph class calls the setMatrixOfWeightsGeo , otherwise the setMatrixOfWeights
+                euclidean must be called . 2 metrics were computed so that it was confirmed that the algorithms are not only correct for one type of metric.
+NOTE: In this implementation the GA runs first and then the ACO , the result of the GA is given prior to starting the ACO not in the end
