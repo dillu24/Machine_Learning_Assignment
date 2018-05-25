@@ -13,9 +13,15 @@ import java.io.File;
 
 public class TSPLauncher {
     public static void main(String args[]) {
+<<<<<<< HEAD
         TSP_GA geneticAlgorithm = new TSP_GA(0.01,30,0.9,0.1,
                 new File("./src/main/java/burma14.tsp"));
         System.out.println("The shortest path is :"+geneticAlgorithm.GA_Engine());
+=======
+        //TSP_GA geneticAlgorithm = new TSP_GA(0.01,30,0.9,0.1,
+                //new File("./burma14.tsp"));
+        //System.out.println("The shortest path is :"+geneticAlgorithm.GA_Engine());
+>>>>>>> 42d240f3da0acc0f49337efb97760e3dc2eae07e
 
         ACO_TSP aco = new ACO_TSP();
         System.out.println("Shortest Route has length "+aco.ACO_Engine());

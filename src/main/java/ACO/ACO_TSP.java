@@ -35,7 +35,11 @@ public class ACO_TSP {
      */
 
     public ACO_TSP(){
+<<<<<<< HEAD
         g = new Graph(new File("./src/main/java/burma14.tsp"));
+=======
+        g = new Graph(new File("./burma14.tsp"));
+>>>>>>> 42d240f3da0acc0f49337efb97760e3dc2eae07e
         numberOfAnts = 10;
         q0 = 0.9;
         alpha = 0.1;
